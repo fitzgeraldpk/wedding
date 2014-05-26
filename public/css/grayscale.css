@@ -264,6 +264,11 @@ a:focus {
         height: 400px;
          background-color: #CCC;
       }
+  #map_canvas_dunmore {
+        width: 100%;
+        height: 400px;
+         background-color: #CCC;
+      }     
 
 @media(min-width:767px) {
     .content-section {
