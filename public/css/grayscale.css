@@ -241,7 +241,7 @@ a:focus {
 
 .download-section {
     width: 100%;
-    padding: 50px 0;
+    padding: 5px 0;
     color: #fff;
     background: url(../img/dunmore.jpg) no-repeat center center scroll;
     background-color: #000;
@@ -250,6 +250,10 @@ a:focus {
     background-size: cover;
     -o-background-size: cover;
 }
+
+
+
+
 
 #map {
     width: 100%;
