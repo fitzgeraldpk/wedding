@@ -90,8 +90,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
         
        
         
-         $scope.currentPage = 1;
-        $scope.currentDetailPage = 1;
+        $scope.currentPage = 1;
         $scope.numPerPage = 7;
         //Accommodation List
         $scope.accomList=[];
@@ -117,7 +116,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
 
             }else{
                 if ($scope.clearListGrid){
-
+						return 1;
                 }   else{
                     return Math.ceil($scope.accomListAll.length / $scope.numPerPage);
                 }
@@ -142,8 +141,8 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
         }
 
         //search the accomist
-        $scope.search = function () {
-
+        $scope.search = function (from) {
+			  
             var matched=false;
             var searchTerms=$scope.searchList.split(' ');
             var matchCount=0;
@@ -177,13 +176,14 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
 
                 $scope.clearListGrid=false;
             }
-            $scope.updateList();
+            
+            $scope.updateList(from);
 
 
         }
         
         //update accom list grid
-        $scope.updateList = function(){
+        $scope.updateList = function(from){
 
 
             if ($scope.accomFilteredList.length>0){
@@ -198,11 +198,16 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
                 $scope.accomList = $scope.accomFilteredList.slice(begin, end);
 
 
-
+				
                 $scope.totPages=$scope.numPagesTot();
 
                 $scope.accomFilteredList=[];
-
+					
+					if (!from){
+				 	
+				 $scope.currentPage = 1;	
+				 	
+				 }
             }else{
 
                 if ($scope.clearListGrid){
@@ -210,7 +215,12 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
                     $scope.accomList=[];
 
                 }
-
+                
+				 if (!from){
+				 	
+				 	$scope.currentPage = 1;	
+				 	
+				 }
                 $scope.totPages=$scope.numPagesTot();
             }
 
@@ -236,7 +246,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
             if ($scope.currentPage < $scope.totPages) {
 
                 $scope.currentPage++;
-
+				
 
             }
             
@@ -253,7 +263,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
             $scope.accomList = $scope.accomListAll.slice(begin, end);
 
             
-            $scope.search();
+            $scope.search('watch');
 
 
 
