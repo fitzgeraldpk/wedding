@@ -175,18 +175,61 @@
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h3>Contact Síle or Patrick</h3>
+                <h3>Contact Details</h3>
                 <p>Feel free to email or phone if you have any questions.</p>
-                <ul class="list-inline banner-social-buttons">
-                    <li><h3><span class="glyphicon glyphicon-phone"> Patrick - <a href="tel:+353876419463">0876419463</a></span></h3>
-                    	<h3><span class="glyphicon glyphicon-phone"> Síle - <a href="tel:+353863724627">0863724627</a></span></h3>
-                    </li>
-                    <li><h3><span class="glyphicon glyphicon-envelope"> Patrick - <a href="mailto:fitzgeraldpk@gmail.com">fitzgeraldpk@gmail.com</a></span></h3>
-                    	<h3><span class="glyphicon glyphicon-envelope"> Síle - <a href="mailto:sile.collins@gmail.com">sile.collins@gmail.com</a></span></h3>
-                    </li>
-                </ul>
+                
             </div>
-        </div>
+           </div>    
+                	<div class="row">
+                		 <div class="col-md-6">
+                		<div class="panel panel-default">
+                			<div class="panel-heading">
+                				
+                				<h3><span class="glyphicon glyphicon-user"> </span> Patrick</h3>
+                				
+                			</div>
+                			<div class="panel-body">
+                				<table>
+                   			 	<tbody>
+                   			 		<tr>
+                   			 			<h4 style="text-align: left"><span class="glyphicon glyphicon-phone"> Patrick - <a href="tel:+353876419463">0876419463</a></span></h4>
+                   			 		</tr>
+                    				<tr>
+                    					<h4 style="text-align: left"><span class="glyphicon glyphicon-envelope"> Patrick - <a href="mailto:fitzgeraldpk@gmail.com">fitzgeraldpk@gmail.com</a></span></h4>
+									</tr>                    	
+                    			
+                    			</tbody>
+                    			</table>
+                    		</div>
+                    	</div>
+ 					</div>
+ 					<div class="col-md-6">
+                		<div class="panel panel-default">
+                			<div class="panel-heading">
+                				
+                				<h3><span class="glyphicon glyphicon-user"> </span> Síle</h3>
+                				
+                			</div>
+                			<div class="panel-body">
+                				<table>
+                   			 	<tbody>
+                   			 		<tr>
+                   			 			<h4 style="text-align: left"><span class="glyphicon glyphicon-phone"> Síle - <a href="tel:+353863724627">0863724627</a></span></h4>
+                   			 		</tr>
+                    				<tr>
+                    					<h4 style="text-align: left"><span class="glyphicon glyphicon-envelope"> Síle - <a href="mailto:sile.collins@gmail.com">sile.collins@gmail.com</a></span></h4>
+									</tr>                    	
+                    			
+                    			</tbody>
+                    			</table>
+                    		</div>
+                    	</div>
+ 					</div>
+                    </div>
+                 
+              
+           
+
     </section>
     
 
@@ -221,14 +264,46 @@
          var myLatlngDunmore = new google.maps.LatLng(51.590589,-8.867687);
         var map_options = {
           center: myLatlng,
-          zoom: 19,
+          zoom: 18,
           mapTypeId: google.maps.MapTypeId.SATELLITE
         }
          var map_optionsDunmore = {
           center: myLatlngDunmore,
-          zoom: 16,
+          zoom: 15,
           mapTypeId: google.maps.MapTypeId.SATELLITE
         }
+        
+        
+        var contentString = '<div id="marker">'+
+       '<h1 id="firstHeading" class="firstHeading">Honan Chapel @ 2PM</h1>'+
+      '<div id="bodyContent">'+
+      '<p id="marker">The wedding ceremony takes plave at 2pm.<br/> There are ceremonies at 12 and 4 so please be on time.</p>'+
+      '<p id="marker"> GPS co-ordinates : 51.8935,-8.489672</p>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+  
+   var contentStringDunmore = '<div id="marker">'+
+       '<h1 id="firstHeading" class="firstHeading">Dunmore House @ 4PM</h1>'+
+      '<div id="bodyContent">'+
+      '<p id="marker">The wedding reception takes place at 4pm.<br/> Lets hope for nice weather!</p>'+
+      '<p id="marker"> GPS co-ordinates : 51.590589,-8.867687</p>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+  
+   var infowindowDunmore = new google.maps.InfoWindow({
+      content: contentStringDunmore
+  });
+	
+	
+	 
+        
+        
         var map = new google.maps.Map(map_canvas, map_options)
         var mapDunmore = new google.maps.Map(map_canvasDunmore, map_optionsDunmore)
          var marker = new google.maps.Marker({
@@ -242,6 +317,15 @@
       map: mapDunmore,
       title: 'Dunmore House reception @ 4pm Co-ordinates: 51.590589,-8.867687'
   });
+  
+  	google.maps.event.addListener(marker, 'click', function() {
+    		infowindow.open(map,marker);
+  	});
+  	
+  	google.maps.event.addListener(markerDunmore, 'click', function() {
+    		infowindowDunmore.open(mapDunmore,markerDunmore);
+  	});
+        
         
       }
       google.maps.event.addDomListener(window, 'load', initialize);

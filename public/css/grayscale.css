@@ -276,6 +276,12 @@ a:focus {
          background-color: #CCC;
       }     
 
+#marker{
+	
+	color: #000;
+}
+
+
 @media(min-width:767px) {
     .content-section {
         padding-top: 250px;
