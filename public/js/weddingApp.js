@@ -4,15 +4,15 @@ var weddingApp = angular.module('weddingApp',[]);
 
 weddingApp.controller('weddingScreenCtrl',['$scope','$filter','facebookService',function($scope,$filter,facebookService) {
 
-		
-		
+		$scope.photos=[];
+		$scope.numPics=0;
 		/**********************************service*****************************************************************************************************************/
 		
-		 facebookService.getPhotos().then(function(data) {
+		 facebookService.getPhotosTimeline().then(function(data) {
         $scope.photoData = data.data;
          console.log($scope.photoData);
-        $scope.photos=[];
-        $scope.numPics=$scope.photoData.length;
+       
+        $scope.numPics=$scope.numPics+$scope.photoData.length;
        for (var i=0;i<$scope.photoData.length;i++){
         
         		
@@ -25,6 +25,22 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter','facebookService',
         console.log(angular.toJson($scope.photos,true));
     });
     
+     facebookService.getPhotosMobile().then(function(data) {
+        $scope.photoData = data.data;
+         console.log($scope.photoData);
+        
+        $scope.numPics=$scope.numPics+$scope.photoData.length;
+       for (var i=0;i<$scope.photoData.length;i++){
+        
+        		
+        			$scope.photos.push({src: $scope.photoData[i].source,desc:'Image '+i})
+        	
+        
+        	
+        }
+        // $scope.photos =[{src: $scope.photoData.data[0].images[0].source, desc: 'Image 01'}];
+        console.log(angular.toJson($scope.photos,true));
+    });
    
     
 
@@ -247,14 +263,23 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter','facebookService',
    
        weddingApp.service('facebookService', function($http) {
    return {
-        getPhotos: function() {
+        getPhotosTimeline: function() {
              //return the promise directly.
              return $http.get('https://graph.facebook.com/1415440245407241/photos')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;
                         });
+        },
+         getPhotosMobile: function() {
+             //return the promise directly.
+             return $http.get('https://graph.facebook.com/1415546278729971/photos')
+                       .then(function(result) {
+                            //resolve the promise as the data
+                            return result.data;
+                        });
         }
+        
    }
 });
 
