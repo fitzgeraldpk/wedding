@@ -144,6 +144,7 @@ a:focus {
     background: rgb(54, 25, 25); /* Fall-back for browsers that don't
                                     support rgba */
     background: rgba(54, 25, 25, .4);
+    
 }
 
 .brand-heading {
@@ -177,7 +178,7 @@ a:focus {
     border: 2px solid #fff;
     border-radius: 35px;
     font-size: 40px;
-    color: #fff;
+    color: #ffd700;
     background: 0 0;
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
