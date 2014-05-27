@@ -72,7 +72,7 @@ a:focus {
 }
 
 .navbar-custom a {
-    color: #fff;
+    color: #ffd700;
 }
 
 .navbar-custom .nav li a {
@@ -126,8 +126,9 @@ a:focus {
     height: auto;
     padding: 100px 0;
     text-align: center;
-    color: #fff;
-    background: url(../img/detail-front.jpg) no-repeat bottom center scroll;
+    color: #ffd700;
+    background: url(../img/SileandPaInvite2.gif) no-repeat bottom center scroll;
+    background-position: -5px 1px;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -138,14 +139,19 @@ a:focus {
 .intro-body {
     display: table-cell;
     vertical-align: middle;
+    background: rgb(54, 25, 25); /* Fall-back for browsers that don't
+                                    support rgba */
+    background: rgba(54, 25, 25, .4);
 }
 
 .brand-heading {
     font-size: 3em;
+    margin-top: 50%;
 }
 
 .intro-text {
     font-size: 18px;
+ 
 }
 
 @media(min-width:767px) {
