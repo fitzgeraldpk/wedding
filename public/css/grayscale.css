@@ -130,6 +130,8 @@ a:focus {
     background: url(../img/SileandPaInvite2.gif) no-repeat bottom center scroll;
     background-position: -5px 1px;
     background-color: #000;
+    background-size:contain;
+	background-position:center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
