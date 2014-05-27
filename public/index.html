@@ -111,92 +111,58 @@
           	<h4>Accommodation List</h4>
                 <table class="table">
                     <tbody>
-                    <tr>
-                        <td><h5>Search Accommodation List (e.g. type bed for just B&B's): <input type="text" data-ng-model="searchList" ng-change="search()" class="input-large search-query" placeholder="Search"></h5></td>
-
-                    </tr>
-                    
-                    		 
-							
-					
-                    
-						<tr>
+                    	<tr>
+                        	<td><h5>Search Accommodation List (e.g. type bed for just B&B's): <input type="text" data-ng-model="searchList" ng-change="search()" class="input-large search-query" placeholder="Search"></h5></td>
+                    	</tr>
+ 						<tr>
 							<td> Page: <span class="label label-primary"> {{currentPage}}</span> of <span class="label label-primary">{{totPages}}</span></td>
-							
 						</tr>
                     </tbody>
-
                 </table>
          </div>	
             <div class="panel-body">
-   			  			
-  			   <table class="table table-hover" style="cursor:pointer">
-                <thead>
-
-                <tr>
-
-                    <th>Type</th>
-   					<th>Name</th>
-   					<th><span class="glyphicon glyphicon-phone-alt"></span> Phone</th>
-   					<th><span class="glyphicon glyphicon-globe"></span> Website</th>
-
-                </tr>
-                </thead>
-                <tbody id="listTable">
-                <tr data-ng-repeat="list in accomList">
-
-                    <td>{{list.type}}</td>
-                    <td>{{list.name}}</td>
-                    <td><a href="tel:+{{list.phoneno}}">{{list.phoneno}}</a></td>
-                    <td><a href="{{list.website}}">{{list.website}}</a></td>
-                   
-                </tr>
-
-
-
-                </tbody>
-                <tfoot>
-
-
-                <tr>
-
-                    
-
-
-                    <td colspan="6">
-
-
-                        <ul class="pagination pull-right">
-
-                            <li ng-class="{disabled: currentPage == 1}">
-                                <a href ng-click="prevPage()">« Prev</a>
-                            </li>
-
-                            <li ng-class="{disabled: currentPage == totPages}">
-                                <a href ng-click="nextPage()">Next »</a>
-                            </li>
-                        </ul>
-
-
-                    </td>
-                </tr>
+   				<table class="table table-hover" style="cursor:pointer">
+                	<thead>
+                		<tr>
+                    		<th>Type</th>
+   							<th>Name</th>
+   							<th><span class="glyphicon glyphicon-phone-alt"></span> Phone</th>
+   							<th><span class="glyphicon glyphicon-globe"></span> Website</th>
+		                </tr>
+            	    </thead>
                 
-                <tr>
-                	<td>
-                		
-							 <h3><span class="glyphicon glyphicon-info-sign"></h3></span><h5> Taxi Numbers:</h5>
-									<h5>ABC Cabs: <a href="tel:+35386 1754777">086 1754777</a>&nbsp; Clon Taxi: <a href="tel:+35323 88 34130">023 88 34130</a></h5>
-									
-                	</td>
-                </tr>
-                </tfoot>
-
-            </table>
-  			
-  			
-   		</div><!--panel body-->
-		</div> <!--panel-->
-		</div>
+                	<tbody id="listTable">
+                		<tr data-ng-repeat="list in accomList">
+	                    	<td>{{list.type}}</td>
+    	                	<td>{{list.name}}</td>
+        	            	<td><a href="tel:+{{list.phoneno}}">{{list.phoneno}}</a></td>
+            	        	<td><a href="{{list.website}}">{{list.website}}</a></td>
+		            	</tr>
+                	</tbody>
+                	<tfoot>
+		                <tr>
+		                	<td colspan="6">
+                        		<ul class="pagination pull-right">
+	                	            <li ng-class="{disabled: currentPage == 1}">
+        	            	            <a href ng-click="prevPage()">« Prev</a>
+    	                    	    </li>
+	                            	<li ng-class="{disabled: currentPage == totPages}">
+    	                            	<a href ng-click="nextPage()">Next »</a>
+        	                    	</li>
+            		            </ul>
+		                    </td>
+        		        </tr>
+				        <tr>
+                			<td>
+                				<h3><span class="glyphicon glyphicon-info-sign"></h3></span><h5> Taxi Numbers:</h5>
+								<h5>ABC Cabs: <a href="tel:+35386 1754777">086 1754777</a>&nbsp; Clon Taxi: <a href="tel:+35323 88 34130">023 88 34130</a></h5>	
+                			</td>
+                		</tr>
+                	</tfoot>
+           	 	</table>
+  					</div><!--panel body-->
+				</div> <!--panel-->
+			</div>
 		</div><!--col-8-->
 		 <div class="col-lg-2">
    		</div>	   		
@@ -224,20 +190,16 @@
     </section>
     
 
- <section class="content-section text-center">
-    	
-    
-        <div class="download-section">
-        	
-            <div class="container">
-            	 
-                <div class="col-lg-8 col-lg-offset-2">
-                  <a href="http://www.dunmorehousehotel.ie/" ></a>
-                </div>
-            </div>
-        </div>
+ 	<section class="content-section text-center">
+		<div class="download-section">
+	    	<div class="container">
+   		    	<div class="col-lg-8 col-lg-offset-2">
+            		<a href="http://www.dunmorehousehotel.ie/" ></a>
+            	</div>
+         	</div>
+     	</div>
         <div class="clearfix"><p></p></div>
-    </section>
+	</section>
    
 
     <!-- Core JavaScript Files -->

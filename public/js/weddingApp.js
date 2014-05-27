@@ -1,9 +1,12 @@
+/*
+ * Angular App used primarily for the Accomdation table
+ */
 var weddingApp = angular.module('weddingApp',[]);
 
 
 
 weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$filter) {
-
+	//Photo gallery removed
 	/*	$scope.photos=[];
 		$scope.numPics=0;
 		
@@ -53,7 +56,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
 
         /************************************-------------------------------------------DATA-------------------------------------------**************************************************************/
 
-       
+       //static data - accommodation list
 
         $scope.accomListAll =[
 
@@ -87,12 +90,12 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
         
        
         
-           $scope.currentPage = 1;
+         $scope.currentPage = 1;
         $scope.currentDetailPage = 1;
         $scope.numPerPage = 7;
-        //Claim List
+        //Accommodation List
         $scope.accomList=[];
-        //Filter Claim List
+        //Filter
         $scope.accomFilteredList=[];
         $scope.searchList='';
         //clear Grid
@@ -105,7 +108,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
         
       
 
-        //total number of pages for claim list
+        //total number of pages for accommodation list
         $scope.numPagesTot = function () {
 
             if ($scope.accomFilteredList.length > 0){
@@ -138,7 +141,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
             return false;
         }
 
-        //search the claimList
+        //search the accomist
         $scope.search = function () {
 
             var matched=false;
@@ -179,7 +182,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
 
         }
         
-        //update claim list grid
+        //update accom list grid
         $scope.updateList = function(){
 
 
@@ -217,7 +220,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
 
        
 
-        //claim list prev page
+        //accom list prev page
         $scope.prevPage = function () {
 
             if ($scope.currentPage > 1) {
@@ -227,7 +230,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
             }
         };
 
-        //claim list next page
+        //accom list next page
         $scope.nextPage = function () {
 
             if ($scope.currentPage < $scope.totPages) {
@@ -260,7 +263,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$f
         
 }]);     
 
-   
+   //retrieve facebook photos not currently being used
        weddingApp.service('facebookService', function($http) {
    return {
         getPhotosTimeline: function() {
