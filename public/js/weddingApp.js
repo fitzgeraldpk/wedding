@@ -2,11 +2,11 @@ var weddingApp = angular.module('weddingApp',[]);
 
 
 
-weddingApp.controller('weddingScreenCtrl',['$scope','$filter','facebookService',function($scope,$filter,facebookService) {
+weddingApp.controller('weddingScreenCtrl',['$scope','$filter',function($scope,$filter) {
 
-		$scope.photos=[];
+	/*	$scope.photos=[];
 		$scope.numPics=0;
-		/**********************************service*****************************************************************************************************************/
+		
 		
 		 facebookService.getPhotosTimeline().then(function(data) {
         $scope.photoData = data.data;
@@ -40,7 +40,7 @@ weddingApp.controller('weddingScreenCtrl',['$scope','$filter','facebookService',
         }
         // $scope.photos =[{src: $scope.photoData.data[0].images[0].source, desc: 'Image 01'}];
         console.log(angular.toJson($scope.photos,true));
-    });
+    });*/
    
     
 
