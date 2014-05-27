@@ -22,9 +22,8 @@
 	 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom" ng-app="weddingApp">
-
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom" ng-app="weddingApp" data-ng-controller="weddingScreenCtrl">
+     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container responsive">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -50,6 +49,9 @@
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
+                    </li>
+                     <li class="page-scroll">
+                        <a href="#gallery">Photos</a>
                     </li>
                 </ul>
             </div>
@@ -97,7 +99,7 @@
     	</div>
     </section>
 
-   <section id="accomodation" data-ng-controller="weddingScreenCtrl">
+   <section id="accomodation" >
    	<div class="clearfix"><p></p></div>
        
    	<div class="row">
@@ -219,6 +221,28 @@
                 </ul>
             </div>
         </div>
+    </section>
+    
+    <section id="gallery">
+    	
+    	<!-- slider container -->
+			 <h2 style="text-align: center">Photos</h2>
+        <div class="row list-unstyled">
+				     	<div class="col-xs-1">
+				     		</div>
+				        <div class="col-xs-5" ng-repeat="photo in photos">
+				            <img class="thumbnail img-responsive" src="{{photo.src}}" alt="..." />
+				                      <div class="caption">
+										<p>Image {{$index+1}} of {{numPics}}</p>
+				            
+				            </div>
+				        </div>
+		</div>
+    	
+    	
+    	
+    	
+    	
     </section>
  <section class="content-section text-center">
     	

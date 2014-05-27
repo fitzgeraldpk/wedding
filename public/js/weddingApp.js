@@ -2,9 +2,38 @@ var weddingApp = angular.module('weddingApp',[]);
 
 
 
-weddingApp.controller('weddingScreenCtrl',function($scope,$filter) {
+weddingApp.controller('weddingScreenCtrl',['$scope','$filter','facebookService',function($scope,$filter,facebookService) {
+
+		
+		
+		/**********************************service*****************************************************************************************************************/
+		
+		 facebookService.getPhotos().then(function(data) {
+        $scope.photoData = data.data;
+         console.log($scope.photoData);
+        $scope.photos=[];
+        $scope.numPics=$scope.photoData.length;
+       for (var i=0;i<$scope.photoData.length;i++){
+        
+        		
+        			$scope.photos.push({src: $scope.photoData[i].source,desc:'Image '+i})
+        	
+        
+        	
+        }
+        // $scope.photos =[{src: $scope.photoData.data[0].images[0].source, desc: 'Image 01'}];
+        console.log(angular.toJson($scope.photos,true));
+    });
+    
+   
+    
 
 
+
+
+
+		
+		/*********************************************************************************************************************************************************/
 
         /************************************-------------------------------------------DATA-------------------------------------------**************************************************************/
 
@@ -20,7 +49,7 @@ weddingApp.controller('weddingScreenCtrl',function($scope,$filter) {
 			{type:'Hotel',name:'Fernhill House Hotel',phoneno:'+353 23 88 33258',website:'http://www.fernhillhousehotel.com/'},
 			{type:'Hotel',name:'Clonakilty Hotel',phoneno:'+353 23 88 58634',website:'http://www.theclonakilty.com/'},
 			{type:'Bed & Breakfeast',name:'Clonakilty Town House',phoneno:'+353 23 88 35533',website:'http://clonakiltytownhouse.com/'},
-			{type:'Bed & Breakfeast',name:'Mrs Maeve O’Grady Williams “Macliam Lodge” ',phoneno:'+353 23 88 35195',website:'http://macliamlodge.com/'},
+			{type:'Bed & Breakfeast',name:'“Macliam Lodge” ',phoneno:'+353 23 88 35195',website:'http://macliamlodge.com/'},
 			{type:'Bed & Breakfeast',name:'Mrs Mary Peppard “Westbourne”',phoneno:'+353 23 88 34034',website:'none available'},
 			{type:'Bed & Breakfeast',name:'Mrs Angela O’Driscoll “Aisling Heights” ',phoneno:'+353 23 88 33491',website:'https://www.dirl.com/cork/clonakilty/aisling-heights.htm'},
 			{type:'Bed & Breakfeast',name:'Ms Margaret Savage “Mountain Lodge”',phoneno:'+353 23 88 57260',website:'none available'},
@@ -39,9 +68,12 @@ weddingApp.controller('weddingScreenCtrl',function($scope,$filter) {
 
        
         /*************************************************************************************************************************************/
-        $scope.currentPage = 1;
+        
+       
+        
+           $scope.currentPage = 1;
         $scope.currentDetailPage = 1;
-        $scope.numPerPage = 5;
+        $scope.numPerPage = 7;
         //Claim List
         $scope.accomList=[];
         //Filter Claim List
@@ -49,6 +81,11 @@ weddingApp.controller('weddingScreenCtrl',function($scope,$filter) {
         $scope.searchList='';
         //clear Grid
         $scope.clearListGrid =false;
+        
+        
+        
+        
+     
         
       
 
@@ -203,10 +240,26 @@ weddingApp.controller('weddingScreenCtrl',function($scope,$filter) {
 
 
         });
-       
+        
+        
+}]);     
 
-
-
-
-
+   
+       weddingApp.service('facebookService', function($http) {
+   return {
+        getPhotos: function() {
+             //return the promise directly.
+             return $http.get('https://graph.facebook.com/1415440245407241/photos')
+                       .then(function(result) {
+                            //resolve the promise as the data
+                            return result.data;
+                        });
+        }
+   }
 });
+
+
+
+
+
+
