@@ -22,7 +22,7 @@
 	 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom" ng-app="weddingApp">
 
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container responsive">
@@ -87,7 +87,7 @@
         </div>
         <div class="clearfix"><p></p></div>
          <h2>Wedding Reception</h2>
-                <p>Our wedding reception will be at 4pm in Dunmore House Hotel Clonakilty.<br/><br/><a class="btn btn-primary" href="https://www.google.com/maps/place/51°35'26.1&quot;N+8°52'03.7&quot;W/@51.590589,-8.867687,15z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0">Dunmore Google Maps.</a></p> 
+                <p>Our wedding reception will be at 4pm in Dunmore House Hotel Clonakilty.<br/><br/><a class="btn btn-primary" href="https://www.google.com/maps/place/51°35'26.1&quot;N+8°52'03.7&quot;W/@51.590589,-8.867687,15z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0">Dunmore Google Maps</a></p> 
         <div class="row">
     		<div class="col-lg-8 ol-lg-offset-2">
     			
@@ -97,54 +97,108 @@
     	</div>
     </section>
 
-   <section id="accomodation">
+   <section id="accomodation" data-ng-controller="weddingScreenCtrl">
    	<div class="clearfix"><p></p></div>
        
    	<div class="row">
-   		<div class="col-lg-2">
-   			</div>
+   <div class="col-lg-2">
+   		</div>	   			  
    		<div class="col-lg-8">
-   			  <h2 style="text-align: center">Accomdation List</h2>
-   		<div class="table-responsive">
-  			<table class="table table-bordered">
-   				<thead>
-   					<tr>
-   						<th>Type</th>
-   						<th>Name</th>
-   						<th><span class="glyphicon glyphicon-phone-alt"> Phone number</span></th>
-   						<th><span class="glyphicon glyphicon-globe"> website</span></th>
-   					</tr>	
-   					
-   					
-   				</thead>
-   				<tbody>
-   					<tr>
-   						<td>Hotel</td>
-   						<td>Quality Hotel</td>
-   						<td><a href="tel:+35323 88 36400">+353 23 88 36400</a></td>
-   						<td> <a href="http://www.qualityclonakiltyhotel.com">http://www.qualityclonakiltyhotel.com</a></td>
-   					</tr>
-   					<tr>
-   						<td>Hotel</td>
-   						<td>O' Donovans Hotel</td>
-   						<td><a href="tel:+353 23 88 33250">+353 23 88 33250</a></td>
-   						<td> <a href="http://www.odonovanshotel.com/">http://www.odonovanshotel.com/</a></td>
-   					</tr>
-   					<tr>
-   						<td>Hotel</td>
-   						<td>O' Donovans Hotel</td>
-   						<td><a href="tel:+353 23 88 33250">+353 23 88 33250</a></td>
-   						<td> <a href="http://www.odonovanshotel.com/">http://www.odonovanshotel.com/</a></td>
-   					</tr>		
-   					
-   				</tbody>
-  			</table>
-		</div> 
-		</div>
-		<div class="col-lg-2">
-   			</div>
-   		
-   	</div>
+   			   			  
+   		  <div class="panel panel-default">
+            <!-- Default panel contents -->
+          <div class="panel-heading"><h4>Accomodation List</h4>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td><h5>Search Accomodation List (e.g. type bed for just B&B's): <input type="text" data-ng-model="searchList" ng-change="search()" class="input-large search-query" placeholder="Search"></h5></td>
+
+                    </tr>
+                    
+                    		 
+							
+					
+                    
+						<tr>
+							<td> Page: <span class="label label-primary"> {{currentPage}}</span> of <span class="label label-primary">{{totPages}}</span></td>
+							
+						</tr>
+                    </tbody>
+
+                </table>
+         </div>	
+            <div class="panel-body">
+   			  			
+  			   <table class="table table-hover" style="cursor:pointer">
+                <thead>
+
+                <tr>
+
+                    <th>Type</th>
+   					<th>Name</th>
+   					<th><span class="glyphicon glyphicon-phone-alt"></span> Phone</th>
+   					<th><span class="glyphicon glyphicon-globe"></span> Website</th>
+
+                </tr>
+                </thead>
+                <tbody id="listTable">
+                <tr data-ng-repeat="list in accomList">
+
+                    <td>{{list.type}}</td>
+                    <td>{{list.name}}</td>
+                    <td><a href="tel:+{{list.phoneno}}">{{list.phoneno}}</a></td>
+                    <td><a href="{{list.website}}">{{list.website}}</a></td>
+                   
+                </tr>
+
+
+
+                </tbody>
+                <tfoot>
+
+
+                <tr>
+
+                    
+
+
+                    <td colspan="6">
+
+
+                        <ul class="pagination pull-right">
+
+                            <li ng-class="{disabled: currentPage == 1}">
+                                <a href ng-click="prevPage()">« Prev</a>
+                            </li>
+
+                            <li ng-class="{disabled: currentPage == totPages}">
+                                <a href ng-click="nextPage()">Next »</a>
+                            </li>
+                        </ul>
+
+
+                    </td>
+                </tr>
+                
+                <tr>
+                	<td>
+                		
+							 <h3><span class="glyphicon glyphicon-info-sign"></h3></span><h5> Taxi Numbers:</h5>
+									<h5>ABC Cabs: <a href="tel:+35386 1754777">086 1754777</a>&nbsp; Clon Taxi: <a href="tel:+35323 88 34130">023 88 34130</a></h5>
+									
+                	</td>
+                </tr>
+                </tfoot>
+
+            </table>
+  			
+  			
+   		</div><!--panel body-->
+		</div> <!--panel-->
+		</div><!--col-12-->
+		 <div class="col-lg-2">
+   		</div>	   		
+   	</div><!--row end-->
    		
    	
    	
@@ -153,7 +207,7 @@
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Síle or Patrick</h2>
+                <h3>Contact Síle or Patrick</h3>
                 <p>Feel free to email or phone if you have any questions.</p>
                 <ul class="list-inline banner-social-buttons">
                     <li><h3><span class="glyphicon glyphicon-phone"> Patrick - <a href="tel:+353876419463">0876419463</a></span></h3>
@@ -178,6 +232,7 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"><p></p></div>
     </section>
    
 
@@ -185,11 +240,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
-    
+    <script src="js/weddingApp.js"></script>
     <!--google maps-->
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	 <script>
